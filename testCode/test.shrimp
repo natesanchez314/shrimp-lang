@@ -1,0 +1,42 @@
+trait MyTrait {
+	
+}
+
+struct MyStruct {
+	num_a: Int,
+	num_b: Float,
+	b: Bool,
+	c: Char,
+	name: String,
+}
+
+
+
+fn main() {
+	var my_var = 5
+	const MY_CONST = 10
+
+	var ret_v = add(my_var, MY_CONST)
+
+	while ret_v > 5 {
+		ret_v--
+	}
+
+	for var i = 0; i < 5; i++ {
+		ret_v++
+	}
+
+	var my_struct = MyStruct{ 0, 0.0, true, 'a', "Hello World" }
+}
+
+fn add(a: Int, b: Int) Int {
+	return a + b
+}
+
+fn eval(i: Int) bool {
+	if i > 10 {
+		return true
+	} else {
+		return false
+	}
+}
