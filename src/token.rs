@@ -1,7 +1,7 @@
 #[derive(Debug, PartialEq, Clone)]
 pub(crate) enum TokenType {
 	// Misc
-	Illegal, Eof,
+	_Illegal, Eof,
 
 	// Identifiers and literals
 	Id, String, Int, Float,

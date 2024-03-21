@@ -1,4 +1,4 @@
-use std::{any::TypeId, collections::HashMap, thread::current};
+use std::collections::HashMap;
 
 use crate::token::{self, Token, TokenType};
 
@@ -200,10 +200,6 @@ impl Lexer {
         } else {
             self.add_token(TokenType::Int, Some(val))
         }
-    }
-
-    fn handle_bool(&mut self) {
-        
     }
 
     fn handle_identifier(&mut self) {

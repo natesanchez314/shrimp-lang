@@ -1,7 +1,8 @@
 mod lexer;
 mod token;
+mod shrimp_err;
 
-use std::{env, fs::{self, File}, io::{self, stdin, stdout, BufRead, StdoutLock, Write}, str};
+use std::{env, fs, io::{stdin, stdout, Write}, str};
 
 use lexer::Lexer;
 
@@ -12,8 +13,6 @@ fn main() {
     if args.len() > 2 {
         println!("Usage: Shrimp [script]")
     } else if args.len() == 2 {
-        println!("Run file!");
-        let mut lock = stdout().lock();
         run_file(args.get(1).unwrap());
     } else {
         repl();
