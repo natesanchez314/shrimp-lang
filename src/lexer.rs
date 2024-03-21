@@ -33,6 +33,9 @@ impl Lexer {
                 ("this".to_owned(), TokenType::This),
                 ("true".to_owned(), TokenType::True),
                 ("false".to_owned(), TokenType::False),
+                ("and".to_owned(), TokenType::And),
+                ("or".to_owned(), TokenType::Or),
+                ("nil".to_owned(), TokenType::Nil),
             ])
         }
     }
@@ -62,6 +65,8 @@ impl Lexer {
             ')' => { self.add_token(TokenType::RParen, None) }
             '{' => { self.add_token(TokenType::LBrace, None) }
             '}' => { self.add_token(TokenType::RBrace, None) }
+            '[' => { self.add_token(TokenType::LBracket, None) }
+            ']' => { self.add_token(TokenType::RBracket, None) }
             ',' => { self.add_token(TokenType::Comma, None) }
             ';' => { self.add_token(TokenType::SemiColon, None) }
             '.' => { self.add_token(TokenType::Dot, None) }
@@ -195,6 +200,10 @@ impl Lexer {
         } else {
             self.add_token(TokenType::Int, Some(val))
         }
+    }
+
+    fn handle_bool(&mut self) {
+        
     }
 
     fn handle_identifier(&mut self) {

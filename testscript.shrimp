@@ -1,0 +1,25 @@
+fn add(a int, b int) int {
+    return a + b;
+}
+
+var v = "my var";
+const c = "my const";
+var f = 3.13;
+var my_array = [1, 2, 3];
+var my_map = {a 1, b 2, c 3}
+
+struct MyStruct {
+    a int,
+    b int,
+    c float,
+}
+
+var my_bool = true;
+
+for int i = 0; i < 10; i += 1 {
+    // Do Something
+}
+
+while (my_bool == true) {
+    my_bool = false;
+}

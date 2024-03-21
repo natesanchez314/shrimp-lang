@@ -1,17 +1,15 @@
-use std::{any::TypeId, collections::HashMap, hash::Hash};
-
 #[derive(Debug, PartialEq, Clone)]
 pub(crate) enum TokenType {
 	// Misc
 	Illegal, Eof,
 
 	// Identifiers and literals
-	Id, Bool, Char, String, Int, Float,
+	Id, String, Int, Float,
 
 	// Operators
 	Assign, Plus, Minus, Star, Slash,
 	Less, LessEq, Greater, GreaterEq, EqEq, BangEq,
-	Bang, Inc, Dec,
+	Bang,
 
 	// Delimiters
 	Dot, Comma, SemiColon,
@@ -23,7 +21,7 @@ pub(crate) enum TokenType {
 	If, Else,
 	While, For,
 	This, Return, Nil,
-	And, Or, In, 
+	And, Or, 
 }
 
 

@@ -14,20 +14,19 @@ fn main() {
     } else if args.len() == 2 {
         println!("Run file!");
         let mut lock = stdout().lock();
-        run_file(args.get(1).unwrap(), &mut lock);
+        run_file(args.get(1).unwrap());
     } else {
         repl();
     }
 }
 
-fn run_file(path: &str, lock: &mut StdoutLock) {
+fn run_file(path: &str) {
     let bytes = fs::read(path)
         .expect("Unable to open file!");
-    run(str::from_utf8(&bytes).unwrap(), lock);
+    run(str::from_utf8(&bytes).unwrap());
 }
 
 fn repl() {
-    let mut lock = stdout().lock();
     loop {
         print!("> ");
         stdout().flush().unwrap();
@@ -38,20 +37,16 @@ fn repl() {
                 } else if input.trim().is_empty() {
                     continue;
                 }
-                run(&input, &mut lock);
+                run(&input);
             }
             _ => {}
         }
     }
 }
 
-fn run(src: &str, lock: &mut StdoutLock) {
+fn run(src: &str) {
     let mut lexer = Lexer::new(src);
-    println!("Starting lexer...");
     let tokens = lexer.eval();
-    println!("Finished lexing.");
-    //writeln!(lock, "Tokens size: {}", tokens.len()).unwrap();
-    println!("Tokens size: {:?}.", tokens.len());
     for token in tokens {
         println!("{}", token.to_string());
     }
