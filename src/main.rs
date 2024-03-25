@@ -1,3 +1,4 @@
+mod ast;
 mod lexer;
 mod token;
 mod shrimp_err;
@@ -5,6 +6,7 @@ mod shrimp_err;
 use std::{env, fs, io::{stdin, stdout, Write}, str};
 
 use lexer::Lexer;
+use token::TokenType;
 
 static mut HAD_ERROR: bool = false;
 
@@ -44,9 +46,10 @@ fn repl() {
 }
 
 fn run(src: &str) {
-    let mut lexer = Lexer::new(src);
-    let tokens = lexer.eval();
-    for token in tokens {
+    let mut lexer = Lexer::new(src.to_owned());
+    let mut token = lexer.next_token();
+    while token.token_type != TokenType::Eof && token.token_type != TokenType::Illegal {
         println!("{}", token.to_string());
+        token = lexer.next_token();
     }
 }

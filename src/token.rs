@@ -1,7 +1,7 @@
 #[derive(Debug, PartialEq, Clone)]
 pub(crate) enum TokenType {
 	// Misc
-	_Illegal, Eof,
+	Illegal, Comment, Eof,
 
 	// Identifiers and literals
 	Id, String, Int, Float,
@@ -12,7 +12,7 @@ pub(crate) enum TokenType {
 	Bang,
 
 	// Delimiters
-	Dot, Comma, SemiColon,
+	Dot, Comma, Colon, SemiColon,
 	LParen, RParen, LBrace, RBrace, LBracket, RBracket,
 
 	// Keywords
@@ -27,13 +27,11 @@ pub(crate) enum TokenType {
 
 pub(crate) struct Token {
 	pub(crate) token_type: TokenType,
-	pub(crate) lexeme: String,
-	pub(crate) literal: Option<String>,
-	pub(crate) line: usize,
+	pub(crate) literal: String,
 }
 
 impl ToString for Token {
 	fn to_string(&self) -> String {
-		format!("Token: {{ type: {:?}, lexeme: {}, literal: {:?} }}", self.token_type, self.lexeme, self.literal)
+		format!("Token: {{ type: {:?}, literal: {:?} }}", self.token_type, self.literal)
 	}
 }
