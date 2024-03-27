@@ -1,3 +1,4 @@
+use crate::ast::expr::Expr;
 use crate::token::Token;
 
 trait StmtTrait {
@@ -5,5 +6,7 @@ trait StmtTrait {
 }
 
 enum Stmt {
-    //Let { token: Token, name:  }
+    Assign( Token, Box<Expr> ),
+    Block( Token, Box<Expr> ),
+    Return( Token, Box<Expr> ),
 }
