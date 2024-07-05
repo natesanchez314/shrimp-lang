@@ -40,6 +40,20 @@ impl Lexer {
         l.read_char();
         l
     }
+
+    pub fn scan(&mut self) -> Vec<Token> { 
+        let mut tokens = Vec::<Token>::new();
+        loop {
+            let token = self.next_token();
+            if token.token_type == TokenType::Eof || token.token_type == TokenType::Illegal {
+                break;
+            }
+            tokens.push(token);
+        }
+        tokens.push(Token{token_type: TokenType::Eof, literal: "".to_string()});
+
+        tokens
+    }
     
     fn read_char(&mut self) {
         if self.is_at_end() {
